@@ -3,6 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import os
+import sys
 
 # Define directories
 RESULTS_DIR = "../results/"
@@ -46,14 +47,15 @@ def animate_activation(G, activation_history, save_as="activation_animation.mp4"
 
         ax.set_title(f"Activation Step {frame + 1}")
 
-    ani = animation.FuncAnimation(fig, update, frames=len(activation_history), interval=500, repeat=True)
+    ani = animation.FuncAnimation(fig, update, frames=len(activation_history), interval=1500, repeat=True)
 
     ani.save(os.path.join(FIGURES_DIR, save_as), writer="ffmpeg", fps=1)
     plt.show()
 
 if __name__ == "__main__":
     # Load results
-    results = load_results()
+    experiment = sys.argv[1] if len(sys.argv) > 1 else "defined_cycles"
+    results = load_results(f"../results/{experiment}.json")
 
     # Reconstruct the graph
     G = nx.DiGraph()
