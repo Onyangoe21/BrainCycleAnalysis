@@ -5,6 +5,7 @@ __pycache__/
 
 # Directed graph ml folder
 directed_graphml/
+processed_graphml/
 
 # ignore results folder
 results/
