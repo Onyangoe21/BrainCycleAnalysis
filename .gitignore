@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Directed graph ml folder
+directed_graphml/
+
+# ignore results folder
+results/
+
 # C extensions
 *.so
 
