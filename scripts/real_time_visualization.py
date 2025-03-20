@@ -12,7 +12,7 @@ os.makedirs(FIGURES_DIR, exist_ok=True)
 
 def load_results(filename="toy_results.json"):
     """Load experiment results from a JSON file."""
-    with open(os.path.join(RESULTS_DIR, filename), "r") as f:
+    with open(filename, "r") as f:
         return json.load(f)
 
 def animate_activation(G, activation_history, save_as="activation_animation.mp4"):
@@ -55,7 +55,7 @@ def animate_activation(G, activation_history, save_as="activation_animation.mp4"
 if __name__ == "__main__":
     # Load results
     experiment = sys.argv[1] if len(sys.argv) > 1 else "defined_cycles"
-    results = load_results(f"../results/{experiment}.json")
+    results = load_results(f"/Users/edwinomondi/Dartmouth/lisp/BrainCycleAnalysis/results/{experiment}.json")
 
     # Reconstruct the graph
     G = nx.DiGraph()

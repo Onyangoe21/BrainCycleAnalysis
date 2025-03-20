@@ -2,7 +2,7 @@ import os
 import sys
 
 # Define experiment types
-EXPERIMENTS = ["defined_cycles", "overlapping_cycles", "random_graph"]
+EXPERIMENTS = ["defined_cycles", "overlapping_cycles", "random_graph", "mini_brain"]
 
 def run_experiment(experiment):
     """
@@ -17,8 +17,10 @@ def run_experiment(experiment):
 
     print(f"🚀 Running experiment: {experiment}")
 
-    # Run the simulation script
-    os.system(f"python simulate_cycles.py {experiment}")
+    if experiment == "mini_brain":
+        os.system("python scripts/mini_brain.py")
+    else:
+        os.system(f"python scripts/simulate_cycles.py {experiment}")
 
     # Run visualization after simulation
     os.system(f"python real_time_visualization.py {experiment}")
