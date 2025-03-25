@@ -100,36 +100,38 @@ if __name__ == "__main__":
     cycles = [
         ["E1"],
         ["A1", "A2", "A3", "A4"],  # 4-node cycle
-        ["B1", "B2", "B3", "B4", "B5"],  # 5-node cycle
+        ["V1", "V2", "V3", "V4", "V5"],  # 5-node cycle
         ["C1", "C2", "C3", "C4", "C5", "C6"],  # 6-node cycle
         ["D1", "D2", "D3", "D4", "D5", "D6", "D7"],  # 7-node cycle
-        ["F1", "F2"],
+        ["Run1", "Run2", "Run3"],
     ]
 
     additional_edges = [
-        ("A3", "E1", "excitatory"),  # Connect A1 → B3
-        ("E1", "C5", "excitatory"),  # Connect B5 → C2
-        ("B3", "E1", "excitatory"),  # Connect C4 → A2
-        ("D7", "A1", "excitatory"),  # Connect D7 → A1
-        ("F1", "F2", "excitatory"),  # Connect F1 → F2
+        ("A3", "E1", "inhibitory"),  # Connect A1 → B3
+        ("E1", "C5", "inhibitory"),  # Connect B5 → C2
+        ("V3", "E1", "inhibitory"),  # Connect C4 → A2
+        ("D7", "Run1", "inhibitory"),  # Connect D7 → A1
+        ("Run1", "Run2", "inhibitory"),  # Connect F1 → F2
+        ("C6", "Run1", "inhibitory"),  # Connect F1 → F2
     ]
 
-    initial_active_neurons = ["A1", "B1"]  # Start activation from A1 and B1
+    initial_active_neurons = ["A1", "V1"]  # Start activation from A1 and B1
 
     # Define custom activation thresholds for certain neurons
     neuron_thresholds = {
         "E1": 2,
-        "F1": 2,
-        "F2": 2,
+        "Run1": 1,
+        "Run2": 1,
+        "Run3": 1,
         "A1": 1,
         "A2": 1,
         "A3": 1,
         "A4": 1,
-        "B1": 1,
-        "B2": 1,
-        "B3": 1,
-        "B4": 1,
-        "B5": 1,
+        "V1": 1,
+        "V2": 1,
+        "V3": 1,
+        "V4": 1,
+        "V5": 1,
         "C1": 1,
         "C2": 1,
         "C3": 1,
